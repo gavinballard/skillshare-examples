@@ -6,7 +6,7 @@
 		<img id="featured-image" src="{{ featured_image | product_img_url: 'medium' }}" alt="{{ featured_image.alt }}" />
 	</p>
 	{% for image in product.images %}
-	<a href="{{ image | product_img_url: 'original' }}" target="_blank">
+	<a href="{{ image | product_img_url: 'original' }}" target="_blank" data-change-variant="{{ image.variants.first.id }}">
 		<img src="{{ image | product_img_url: 'thumb' }}" alt="{{ image.alt }}" />
 	</a>
 	{% endfor %}
