@@ -34,3 +34,10 @@
   display: block;
   margin: 1em 0 0.5em 0;
 }
+
+.swatch {
+  display: inline-block;
+  border: 1px solid black;
+  width: 24px;
+  height: 24px;
+}
