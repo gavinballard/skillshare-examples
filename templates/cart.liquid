@@ -1,0 +1,44 @@
+<h1>Your Cart</h1>
+
+<table>
+	<tbody>
+	{% for item in cart.items %}
+	<tr>
+		<td>
+			<a href="{{ item.url }}">
+				<img src="{{ item | img_url: 'small' }}"  alt="{{ item.title | escape }}" />
+			</a>
+		</td>
+		<td>
+			<a href="{{ item.url }}">
+				<strong>{{ item.product.title }}</strong>
+				{% if item.product.variants.size > 1 %}
+				<span class="variant_title">{{ item.variant.title }}</span>
+				{% endif %}
+			</a>
+			{% if item.properties %}
+			<ul class="cart-properties">
+				{% for property in item.properties %}
+					<li>{{ property.first }}: {{ property.last }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</td>
+		<td>{{ item.quantity }}</td>
+		<td>{{ item.line_price | money }}</td>
+		<td class="remove"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart">Remove</a></td>
+	</tr>
+	{% endfor %}
+	</tbody>
+	<tfoot>
+	<tr>
+		<td colspan="3"><strong>Total:</strong></td>
+		<td><strong>{{ cart.total_price | money }}</strong></td>
+		<td></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>
+	<a href="/checkout">Check Out</a>
+</p>	
