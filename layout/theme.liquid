@@ -7,7 +7,7 @@
     {{ 'normalize.css' | asset_url | stylesheet_tag }}
     {{ 'styles.css' | asset_url | stylesheet_tag }}
   </head>
-  <body>
+  <body class="no-js">
     <nav id="navbar">
       <a id="navbar-brand" href="/products/candle">The Candle Store</a>
 
@@ -57,6 +57,9 @@
             $(optionSelectors.selectors[optionIndex].element).val(optionValue).trigger('change');
           }
         });
+
+        // Remove the JS flag on the body.
+        $('body').removeClass('no-js');
 
       }(jQuery));
     </script>

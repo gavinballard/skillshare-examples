@@ -57,3 +57,11 @@
   width: 24px;
   height: 24px;
 }
+
+.selector-wrapper {
+  display: none;
+}
+
+.no-js .swatch-wrapper {
+  display: none;
+}
