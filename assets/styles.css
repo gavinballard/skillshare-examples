@@ -1,0 +1,36 @@
+/* Candle Store
+   ========================================================================== */
+
+#navbar {
+  padding: 1em;  
+  background-color: #f7f7f9;
+}
+
+#navbar-brand {
+  color: #8e869d;
+  text-decoration: none;
+}
+
+#navbar-brand:hover {
+  color: #373a3c;
+}
+
+#content {
+  padding: 0 1em;
+}
+
+#product-images {
+  width: 25%;  
+  float: left;
+}
+
+#product-form {
+  width: 25%;
+  margin-left: 5%;
+  float: left;
+}
+
+#product-form label {
+  display: block;
+  margin: 1em 0 0.5em 0;
+}

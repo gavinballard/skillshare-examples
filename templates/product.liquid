@@ -1,0 +1,41 @@
+<h1>{{ product.title }}</h1>
+
+<section id="product-images">
+	{% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+	<p>
+		<img id="featured-image" src="{{ featured_image | product_img_url: 'medium' }}" alt="{{ featured_image.alt }}" />
+	</p>
+	{% for image in product.images %}
+	<a href="{{ image | product_img_url: 'original' }}" target="_blank">
+		<img src="{{ image | product_img_url: 'thumb' }}" alt="{{ image.alt }}" />
+	</a>
+	{% endfor %}
+</section>
+
+<section id="product-form">
+	<form action="/cart/add" method="post">
+
+		<!-- Price -->
+		<h3 id="product-price">{{ product.price_min | money }} to {{ product.price_max | money }}</h3>
+
+		<!-- Variant select. -->
+    <label for="product-select">Choose your {{ product.title }}</label>
+		<select id="product-select" name="id">
+			{% for variant in product.variants %}
+			<option value="{{ variant.id }}"{% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>{{ variant.title }} - {{ variant.price | money }}</option>
+			{% endfor %}
+		</select>
+
+    <!-- Custom properties. -->
+    {% if product.metafields.properties.engraving %}
+    <label for="properties[Engraving]">Engraved message (optional)</label>
+    <input type="text" id="properties[Engraving]" name="properties[Engraving]" />
+    {% endif %}
+
+		<!-- Add to cart button. -->
+		<p>
+			<input type="submit" id="add-to-cart" class="btn btn-primary" name="add" value="Add to Cart" />
+		</p>
+
+	</form>
+</section>
