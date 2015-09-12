@@ -49,6 +49,15 @@
           optionSelectors.selectVariant($(this).data('changeVariant'));
         });
 
+        // Create an event listener to set a specific variant option when clicking on swatches.
+        $(document).on('click', '[data-change-option]', function(e) {
+          e.preventDefault();
+          var optionIndex = parseInt($(this).data('changeOption')), optionValue = $(this).data('changeValue');
+          if(optionSelectors.optionExistInSelect(optionSelectors.selectors[optionIndex].element, optionValue)) {
+            $(optionSelectors.selectors[optionIndex].element).val(optionValue).trigger('change');
+          }
+        });
+
       }(jQuery));
     </script>
     {% endif %}

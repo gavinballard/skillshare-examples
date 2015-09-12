@@ -13,18 +13,36 @@
 </section>
 
 <section id="product-form">
-	<form action="/cart/add" method="post">
+  <form action="/cart/add" method="post">
 
-		<!-- Price -->
-		<h3 id="product-price">{{ product.price_min | money }} to {{ product.price_max | money }}</h3>
+    <!-- Price -->
+    <h3 id="product-price">{{ product.price_min | money }} to {{ product.price_max | money }}</h3>
 
-		<!-- Variant select. -->
+    <!-- Variant select. -->
     <label for="product-select">Choose your {{ product.title }}</label>
-		<select id="product-select" name="id">
-			{% for variant in product.variants %}
-			<option value="{{ variant.id }}"{% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>{{ variant.title }} - {{ variant.price | money }}</option>
-			{% endfor %}
-		</select>
+    <select id="product-select" name="id">
+      {% for variant in product.variants %}
+      <option value="{{ variant.id }}"{% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>{{ variant.title }} - {{ variant.price | money }}</option>
+      {% endfor %}
+    </select>
+
+    <!-- Variant swatches. -->
+    {% for option in product.options %}
+    {% if option == 'Color' or option == 'Colour' %}
+      {% assign option_index = forloop.index0 %}
+      <label>{{ option }}</label>
+      {% assign displayed_option_values = '' %}
+      {% for variant in product.variants %}
+        {% assign option_value = variant.options[option_index] %}
+        {% unless displayed_option_values contains option_value %}
+          <a href="{{ variant.url }}" class="swatch" style="background-color: {{ option_value | handleize }};" data-change-option="{{ option_index }}" data-change-value="{{ option_value }}" title="{{ option_value }}"></a>
+          {% assign displayed_option_values = displayed_option_values | join: ',' %}
+          {% assign displayed_option_values = displayed_option_values | append: ',' | append: option_value %}
+          {% assign displayed_option_values = displayed_option_values | split: ',' %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+    {% endfor %}
 
     <!-- Custom properties. -->
     {% if product.metafields.properties.engraving %}
@@ -32,10 +50,10 @@
     <input type="text" id="properties[Engraving]" name="properties[Engraving]" />
     {% endif %}
 
-		<!-- Add to cart button. -->
-		<p>
-			<input type="submit" id="add-to-cart" class="btn btn-primary" name="add" value="Add to Cart" />
-		</p>
+    <!-- Add to cart button. -->
+    <p>
+      <input type="submit" id="add-to-cart" class="btn btn-primary" name="add" value="Add to Cart" />
+    </p>
 
-	</form>
+  </form>
 </section>
