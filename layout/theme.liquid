@@ -40,7 +40,15 @@
 
         };
 
-        new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: onVariantSelected, enableHistoryState: true });
+        // Instantiate the option selectors.
+        var optionSelectors = new Shopify.OptionSelectors("product-select", { product: {{ product | json }}, onVariantSelected: onVariantSelected, enableHistoryState: true });
+
+        // Create an event listener to set a specific variant when clicking on image thumbnails.
+        $(document).on('click', '[data-change-variant]', function(e) {
+          e.preventDefault();
+          optionSelectors.selectVariant($(this).data('changeVariant'));
+        });
+
       }(jQuery));
     </script>
     {% endif %}
