@@ -1,0 +1,22 @@
+{% for option in product.options %}
+{% if option == swatch %}
+<div class="swatch-wrapper">
+  {% assign option_index = forloop.index0 %}
+  <label>{{ option }}</label>
+  {% assign displayed_option_values = '' %}
+  {% for variant in product.variants %}
+    {% assign option_value = variant.options[option_index] %}
+    {% unless displayed_option_values contains option_value %}
+      {% if option == 'Color' or option == 'Colour' %}
+        <a href="{{ variant.url }}" class="swatch" style="background-color: {{ option_value | handleize }};" data-change-option="{{ option_index }}" data-change-value="{{ option_value }}" title="{{ option_value }}"></a>
+      {% else %}
+        <a href="{{ variant.url }}" data-change-option="{{ option_index }}" data-change-value="{{ option_value }}">{{ option_value }}</a>
+      {% endif %}
+      {% assign displayed_option_values = displayed_option_values | join: ',' %}
+      {% assign displayed_option_values = displayed_option_values | append: ',' | append: option_value %}
+      {% assign displayed_option_values = displayed_option_values | split: ',' %}
+    {% endunless %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endfor %}
