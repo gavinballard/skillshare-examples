@@ -15,7 +15,7 @@
       {{ content_for_layout }}
     </section>
 
-    {{ 'jquery-1.11.3.min.js' | asset_url | script_tag }}
+    {{ 'jquery-1.11.3.js' | asset_url | script_tag }}
 
     {% if template contains 'product' %}
     {{ 'option_selection.js' | shopify_asset_url | script_tag }}
