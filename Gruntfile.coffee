@@ -37,7 +37,7 @@ module.exports = (grunt) ->
         sourceMap: not IS_PRODUCTION
       theme:
         files:
-          '.build/assets/script.js.liquid': ['theme/assets/js/script-*.js']
+          '.build/assets/jquery-1.11.3.js': ['theme/assets/js/jquery-1.11.3.js']
 
     # Optimisation of image assets.
     imagemin:
@@ -144,7 +144,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-imagemin'
-  grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
