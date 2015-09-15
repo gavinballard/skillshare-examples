@@ -26,6 +26,28 @@
 
 <section id="collection-controls">
 
+  <label>Category</label>
+  <ul class="filter-list">
+    <li>
+      {% if collection.handle == 'all' %}
+      <span>Any</span>
+      {% else %}
+      <a href="/collections/all">Any</a>
+      {% endif %}
+    </li>
+    {% for category_collection in collections %}
+    <li>
+      {% if category_collection.handle == collection.handle %}
+      <span>{{ category_collection.title }}</span>
+      {% else %}
+      <a href="{{ category_collection.url }}">{{ category_collection.title }}</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <hr />
+
   <label for="view">View as...</label>
   <select id="view" name="view">
     <option value="grid" {% if collection-view == 'grid' %}selected="selected"{% endif %}>Grid</option>
