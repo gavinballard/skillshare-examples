@@ -59,12 +59,27 @@
           }
         });
 
-        // Remove the JS flag on the body.
-        $('body').removeClass('no-js');
+      }(jQuery));
+    </script>
+    {% endif %}
+
+    {% if template contains 'collection' %}
+    <script type="text/javascript">
+      (function($) {
+
+        // Create an event listener to auto-submit the collection filter form on select change.
+        $(document).on('change', '[data-update-collection]', function(e) {
+          $(this).closest('form').submit();
+        });
 
       }(jQuery));
     </script>
     {% endif %}
+
+    <script type="text/javascript">
+      // Remove the JS flag on the body.
+      $('body').removeClass('no-js');
+    </script>
 
   </body>
 </html>

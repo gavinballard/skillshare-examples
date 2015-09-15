@@ -62,6 +62,14 @@
   display: none;
 }
 
+.js-hide {
+  display: none;
+}
+
+.no-js .js-hide {
+  display: block;
+}
+
 .no-js .swatch-wrapper {
   display: none;
 }
