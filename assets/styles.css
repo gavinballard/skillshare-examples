@@ -34,7 +34,7 @@
   float: left;
 }
 
-#product-form {
+#product-form, #collection-controls {
   width: 25%;
   margin-left: 5%;
   float: left;
@@ -64,4 +64,47 @@
 
 .no-js .swatch-wrapper {
   display: none;
+}
+
+#collection-products {
+  width: 40%;
+  float: left;
+}
+
+#collection-controls {
+  width: 25%;
+  margin-left: 5%;
+  float: left;
+}
+
+.product-list {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.product-list .product {
+  list-style: none;
+  display: block;
+  float: left;
+  width: 33%;
+  padding: 0;
+  text-align: center;
+}
+
+.product-list .product:nth-child(3n+1) {
+  clear: both;
+}
+
+.product-list .product a {
+  display: block;
+}
+
+.product-list .product-image {
+  display: block;
+  width: 100%;
+}
+
+.product-list .product-details {
+  display: block;
 }
