@@ -3,7 +3,7 @@
 <form method="get" action="{{ collection.url }}">
 
 <section id="collection-products">
-  {% paginate collection.products by 12 %}
+  {% paginate collection.products by 3 %}
 
   <ul class="product-list product-list-{{ collection-view }}">
   {% for product in collection.products %}
@@ -20,6 +20,8 @@
     </li>
   {% endfor %}
   </ul>
+
+  {% include 'pagination' %}
 
   {% endpaginate %}
 </section>
