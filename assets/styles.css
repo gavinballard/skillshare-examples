@@ -109,3 +109,11 @@
   font-size: 80%;
   color: #aaa;
 }
+
+.filter-list {
+  padding: 0;
+}
+
+.filter-list li {
+  list-style: none;
+}
