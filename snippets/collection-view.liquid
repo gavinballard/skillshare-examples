@@ -1,0 +1,41 @@
+<h1>{{ collection.title }}</h1>
+
+<form method="get" action="{{ collection.url }}">
+
+<section id="collection-products">
+  {% paginate collection.products by 12 %}
+
+  <ul class="product-list product-list-{{ collection-view }}">
+  {% for product in collection.products %}
+    <li class="product">
+      <a href="{{ product.url }}">
+        <img class="product-image" src="{{ product.featured_image | product_img_url: 'small' }}" />
+        <span class="product-title">{{ product.title }} ({{ product.price | money }})</span>
+        {% if collection-view == 'list' %}
+        <div class="product-details">
+          {{ product.description | strip_html }}
+        </div>
+        {% endif %}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+
+  {% endpaginate %}
+</section>
+
+<section id="collection-controls">
+
+  <label for="view">View as...</label>
+  <select id="view" name="view">
+    <option value="grid" {% if collection-view == 'grid' %}selected="selected"{% endif %}>Grid</option>
+    <option value="list" {% if collection-view == 'list' %}selected="selected"{% endif %}>List</option>
+  </select>
+
+  <p>
+    <button type="submit">Update</button>
+  </p>
+
+</section>
+
+</form>

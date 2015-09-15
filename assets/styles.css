@@ -70,25 +70,42 @@
 .product-list .product {
   list-style: none;
   display: block;
-  float: left;
-  width: 33%;
   padding: 0;
-  text-align: center;
-}
-
-.product-list .product:nth-child(3n+1) {
-  clear: both;
 }
 
 .product-list .product a {
   display: block;
 }
 
-.product-list .product-image {
+.product-list-grid .product {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+
+.product-list-grid .product:nth-child(3n+1) {
+  clear: both;
+}
+
+.product-list-grid .product-image {
   display: block;
   width: 100%;
 }
 
-.product-list .product-details {
+.product-list-grid .product-title {
   display: block;
+}
+
+.product-list-list .product {
+  clear: both;
+}
+
+.product-list-list .product-image {
+  display: inline-block;
+  float: left;
+}
+
+.product-list-list .product-details {
+  font-size: 80%;
+  color: #aaa;
 }
