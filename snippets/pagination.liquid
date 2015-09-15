@@ -1,14 +1,14 @@
 {% if paginate.parts.size > 0 %}
 <ul class="pagination">
   {% if paginate.previous %}
-      <li><a href="{{ paginate.previous.url }}" title="{{ paginate.previous.title }}">&larr;</a></li>
+      <li><a href="{{ paginate.previous.url }}" title="{{ paginate.previous.title }}" data-link-collection>&larr;</a></li>
   {% else %}
       <li class="disabled"><span>&larr;</span></li>
   {% endif %}
 
   {% for part in paginate.parts %}
     {% if part.is_link %}
-      <li>{{ part.title | link_to: part.url }}</li>
+      <li><a href="{{ part.url }}" data-link-collection>{{ part.title }}</a></li>
     {% else %}
       {% if part.title == paginate.current_page %}
         <li class="active"><span>{{ part.title }} <span class="sr-only">(current)</span></span></li>
@@ -19,7 +19,7 @@
   {% endfor %}
 
   {% if paginate.next %}
-    <li><a href="{{ paginate.next.url }}" title="{{ paginate.next.title }}">&rarr;</a></li>
+    <li><a href="{{ paginate.next.url }}" title="{{ paginate.next.title }}" data-link-collection>&rarr;</a></li>
   {% else %}
     <li class="disabled"><span>&rarr;</span></li>
   {% endif %}

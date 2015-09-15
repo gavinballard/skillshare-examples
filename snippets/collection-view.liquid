@@ -34,7 +34,7 @@
       {% if collection.handle == 'all' %}
       <span>Any</span>
       {% else %}
-      <a href="/collections/all">Any</a>
+      <a href="/collections/all" data-link-collection>Any</a>
       {% endif %}
     </li>
     {% for category_collection in collections %}
@@ -42,7 +42,7 @@
       {% if category_collection.handle == collection.handle %}
       <span>{{ category_collection.title }}</span>
       {% else %}
-      <a href="{{ category_collection.url }}">{{ category_collection.title }}</a>
+      <a href="{{ category_collection.url }}" data-link-collection>{{ category_collection.title }}</a>
       {% endif %}
     </li>
     {% endfor %}
@@ -53,9 +53,9 @@
     {% for tag in collection.tags %}
     <li>
       {% if current_tags contains tag %}
-        {{ '&#9745;' | append: tag | link_to_remove_tag:tag }}
+        {{ '&#9745;' | append: tag | link_to_remove_tag:tag | replace:'<a title="', '<a data-link-collection title="' }}
       {% else %}
-        {{ '&#9744;' | append: tag | link_to_add_tag:tag }}
+        {{ '&#9744;' | append: tag | link_to_add_tag:tag | replace:'<a title="', '<a data-link-collection title="' }}
       {% endif %}
     </li>
     {% endfor %}

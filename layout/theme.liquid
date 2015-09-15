@@ -81,6 +81,15 @@
           });
         });
 
+        // Create an event listener for links inside the collection page.
+        $(document).on('click', '[data-link-collection]', function(e) {
+          e.preventDefault();
+          var url = $(this).attr('href');
+          $('#content').load(url + ' #content', function() {
+            window.history.pushState({}, null, url);
+          });
+        });
+
       }(jQuery));
     </script>
     {% endif %}
