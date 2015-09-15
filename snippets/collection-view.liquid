@@ -1,6 +1,6 @@
 <h1>{{ collection.title }}</h1>
 
-<form method="get" action="{{ collection.url }}">
+<form id="collection-form" method="get" action="{{ collection.url }}">
 
 <section id="collection-products">
   {% paginate collection.products by 3 %}
