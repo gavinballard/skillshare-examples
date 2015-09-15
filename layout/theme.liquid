@@ -70,6 +70,15 @@
           $(this).closest('form').submit();
         });
 
+        // Override the form submit to fetch via Ajax and update history.
+        $(document).on('submit', '#collection-form', function(e) {
+          e.preventDefault();
+          var url = $(this).attr('action'), data = $(this).serialize();
+          $('#content').load(url + ' #content', data, function() {
+            window.history.pushState({}, null, url + '?' + data);
+          });
+        });
+
       }(jQuery));
     </script>
     {% endif %}
