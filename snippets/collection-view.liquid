@@ -46,6 +46,19 @@
     {% endfor %}
   </ul>
 
+  <label>Filter by...</label>
+  <ul class="filter-list">
+    {% for tag in collection.tags %}
+    <li>
+      {% if current_tags contains tag %}
+        {{ '&#9745;' | append: tag | link_to_remove_tag:tag }}
+      {% else %}
+        {{ '&#9744;' | append: tag | link_to_add_tag:tag }}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
   <hr />
 
   <label for="view">View as...</label>
