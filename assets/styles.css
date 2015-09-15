@@ -30,7 +30,7 @@
   float: left;
 }
 
-#product-form label {
+#product-form label, #collection-controls label {
   display: block;
   margin: 1em 0 0.5em 0;
 }
