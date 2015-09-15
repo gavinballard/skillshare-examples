@@ -83,6 +83,10 @@
   margin: 0;
 }
 
+.product-list:after {
+  clear: both;
+}
+
 .product-list .product {
   list-style: none;
   display: block;
@@ -132,4 +136,22 @@
 
 .filter-list li {
   list-style: none;
+}
+
+.pagination {
+  clear: both;
+  display: block;
+  padding-top: 1em;
+  text-align: center;
+}
+
+.pagination li {
+  display: inline-block;
+  list-style: none;
+}
+
+.pagination-text {
+  text-align: center;
+  padding-top: 1em;
+  clear: both;
 }
