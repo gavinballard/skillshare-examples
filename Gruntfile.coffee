@@ -37,7 +37,10 @@ module.exports = (grunt) ->
         sourceMap: not IS_PRODUCTION
       theme:
         files:
-          '.build/assets/script.js.liquid': ['theme/assets/js/script-*.js']
+          '.build/assets/script.js.liquid': [
+            'node_modules/jquery/dist/jquery.js',
+            'node_modules/shopify-cartjs/dist/rivets-cart.js',
+          ]
 
     # Optimisation of image assets.
     imagemin:
