@@ -63,7 +63,18 @@
 
           e.preventDefault(); // prevent default form submission
 
-          $.post('/cart/add.json', $(this).serialize());
+          $('#add-to-cart').val('Adding to cart...').prop('disabled', true);
+
+          $.post('/cart/add.json', $(this).serialize())
+          .done(function() {
+
+          })
+          .fail(function(jqxhr) {
+
+          })
+          .always(function() {
+            $('#add-to-cart').val('Add to Cart').prop('disabled', false);
+          });
 
         });
 
