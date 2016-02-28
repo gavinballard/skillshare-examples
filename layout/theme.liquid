@@ -68,8 +68,16 @@
           $.post('/cart/add.json', $(this).serialize())
           .done(function() {
 
+            $.getJSON('/cart.json', function(cart) {
+              $('#navbar-cart').html('Cart (' + Shopify.formatMoney(cart.total_price) + ')');
+            });
+
+            $('#checkout-link').show();
+
           })
           .fail(function(jqxhr) {
+
+            alert(jqxhr.responseJSON.errors);
 
           })
           .always(function() {
