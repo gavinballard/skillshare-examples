@@ -59,6 +59,14 @@
           }
         });
 
+        $('#product-form').submit(function(e) {
+
+          e.preventDefault(); // prevent default form submission
+
+          $.post('/cart/add.json', $(this).serialize());
+
+        });
+
       }(jQuery));
     </script>
     {% endif %}
