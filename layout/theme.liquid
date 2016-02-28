@@ -12,7 +12,7 @@
       <a id="navbar-brand" href="/products/candle">The Candle Store</a>
       <a href="/collections/all">Shop</a>
 
-      <a id="navbar-cart" href="/cart">Cart ({{ cart.total_price | money }})</a>
+      <a id="navbar-cart" href="/cart">Cart (<span data-cart-render="total_price_money">{{ cart.total_price | money }}</span>)</a>
     </nav>
     <section id="content">
       {{ content_for_layout }}
@@ -59,33 +59,6 @@
           }
         });
 
-        $('#product-form').submit(function(e) {
-
-          e.preventDefault(); // prevent default form submission
-
-          $('#add-to-cart').val('Adding to cart...').prop('disabled', true);
-
-          $.post('/cart/add.json', $(this).serialize())
-          .done(function() {
-
-            $.getJSON('/cart.json', function(cart) {
-              $('#navbar-cart').html('Cart (' + Shopify.formatMoney(cart.total_price) + ')');
-            });
-
-            $('#checkout-link').show();
-
-          })
-          .fail(function(jqxhr) {
-
-            alert(jqxhr.responseJSON.errors);
-
-          })
-          .always(function() {
-            $('#add-to-cart').val('Add to Cart').prop('disabled', false);
-          });
-
-        });
-
       }(jQuery));
     </script>
     {% endif %}
@@ -124,6 +97,11 @@
     <script type="text/javascript">
       // Remove the JS flag on the body.
       $('body').removeClass('no-js');
+    </script>
+
+    {{ 'rivets-cart.min.js' | asset_url | script_tag }}
+    <script type="text/javascript">
+      CartJS.init({{ cart | json }});
     </script>
 
   </body>
