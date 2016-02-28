@@ -1,3 +1,13 @@
 .DS_Store
 /.idea
-/config.yml
+/.sass-cache
+/node_modules
+/bower_components
+/dist
+/.build/config.yml
+/.build/assets
+/.build/config
+/.build/layout
+/.build/locales
+/.build/snippets
+/.build/templates
