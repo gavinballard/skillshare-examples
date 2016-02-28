@@ -12,8 +12,8 @@
 	{% endfor %}
 </section>
 
-<section id="product-form">
-  <form action="/cart/add" method="post">
+<section id="product-form-wrapper">
+  <form id="product-form" action="/cart/add" method="post">
 
     <!-- Price -->
     <h3 id="product-price">{{ product.price_min | money }} to {{ product.price_max | money }}</h3>

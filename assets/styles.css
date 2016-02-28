@@ -34,13 +34,13 @@
   float: left;
 }
 
-#product-form, #collection-controls {
+#product-form-wrapper, #collection-controls {
   width: 25%;
   margin-left: 5%;
   float: left;
 }
 
-#product-form label, #collection-controls label {
+#product-form-wrapper label, #collection-controls label {
   display: block;
   margin: 1em 0 0.5em 0;
 }
